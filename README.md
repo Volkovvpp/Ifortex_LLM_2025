@@ -15,8 +15,8 @@ This project provides a simple pipeline for summarizing long texts using the `fa
 1. **Clone the repository**:
 
 ```bash
-git clone https://github.com/<Volkovvpp>/<your-repo>.git
-cd <your-repo>
+git clone https://github.com/Volkovvpp/Ifortex_LLM_2025.git
+cd Ifortex_LLM_2025
 ```
 
 2. **Install dependencies used for the application:**
