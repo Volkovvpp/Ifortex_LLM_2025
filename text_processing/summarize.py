@@ -18,9 +18,13 @@ def summarize_with_overlap(text, max_length=512, overlap=32):
     summaries = []
 
     for chunk in chunks_in_tokens:
+        #Тензор с входными токенами на устройстве (CPU/GPU)
         input_ids = torch.tensor([chunk], device=DEVICE)
+
+        #Создание маски внимания
         attention_mask = torch.ones_like(input_ids)
 
+        #Генерация саммари
         output_ids = model.generate(
             input_ids=input_ids,
             attention_mask=attention_mask,
@@ -31,6 +35,7 @@ def summarize_with_overlap(text, max_length=512, overlap=32):
             early_stopping=True
         )
 
+        #Декодирование токенов в текст
         summary = tokenizer.decode(output_ids[0], skip_special_tokens=True)
         summaries.append(summary)
 

@@ -5,8 +5,10 @@ from transformers import AutoTokenizer
 
 os.environ['HF_HOME'] = ENV_PATH
 
+#Используем токенизатор от нашей модели
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
 
+#Токенизация текста и разбиение на чанки
 def chunk_with_overlap(text, max_length=512, overlap=32):
     tokens = tokenizer.encode(text, add_special_tokens=False)
     total_tokens = len(tokens)
@@ -18,6 +20,7 @@ def chunk_with_overlap(text, max_length=512, overlap=32):
     if step <= 0:
         raise ValueError("Перекрытие (overlap) должно быть меньше max_length")
 
+    #Формирование массива чанков
     chunks = []
     for i in range(0, total_tokens, step):
         chunk_tokens = tokens[i:i + max_length]
