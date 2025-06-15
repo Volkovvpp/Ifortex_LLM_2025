@@ -12,7 +12,7 @@ def chunk_with_overlap(text, max_length=512, overlap=32):
     total_tokens = len(tokens)
 
     if total_tokens <= max_length:
-        return [text]
+        return [tokens]
 
     step = max_length - overlap
     if step <= 0:
